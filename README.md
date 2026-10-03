@@ -1,0 +1,56 @@
+# SeniorCare Guardian
+
+Healthcare technology prototype for senior-care monitoring, safety workflows, simulated health data and privacy/security demonstrations.
+
+## What it demonstrates
+
+- React + TypeScript + Vite
+- Component-based frontend architecture
+- Interactive workflow views
+- Environment-based configuration
+- Simulation and demonstration workflows
+- Privacy and security boundaries appropriate to a portfolio prototype
+
+## Scope
+
+The repository uses demonstration data. It is not a clinically validated alarm, monitoring or decision-support system and must not be used as a substitute for approved clinical equipment or procedures.
+
+The repository is intended as inspectable engineering portfolio evidence. Claims about clinical effectiveness, regulatory compliance or production deployment are deliberately outside the project scope.
+
+## Local development
+
+Requirements:
+
+- Node.js 20+
+- npm
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+For features requiring an AI API, create a local `.env` file using the variables documented in `.env.example`. Never commit secrets.
+
+Start the application:
+
+```bash
+npm run dev
+```
+
+## Verification
+
+```bash
+npm run lint
+npm run build
+```
+
+GitHub Actions runs the TypeScript and production-build checks on pushes and pull requests.
+
+## Data protection
+
+Use synthetic demonstration data only. Do not place patient names, national identity numbers, addresses, phone numbers, journal content, credentials or other confidential information in the repository or an unapproved deployment.
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE).
