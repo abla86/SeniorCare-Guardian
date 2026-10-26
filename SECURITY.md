@@ -1,22 +1,16 @@
 # Security Policy
 
-## Scope and intended use
+## Scope
+SeniorCare Guardian is a healthcare technology prototype using demonstration data. It is not a certified medical device, clinically validated alarm system, emergency-response service or substitute for approved care procedures.
 
-SeniorCare Guardian is a portfolio prototype using simulated care and health data. It is not a certified medical device, a clinically validated monitoring service, or an approved system for real resident or patient information.
+## Data safety
+- Use synthetic data only in public demos and tests.
+- Never commit patient names, national identity numbers, addresses, medical records, credentials or production configuration.
+- Do not enter real health data into an unapproved deployment or AI service.
+- Review logs, exports, browser storage, retention and external requests before any real-world use.
 
-## Data and privacy
+## Operational boundary
+A passing test or successful build does not prove clinical safety, availability, privacy compliance or production readiness. Do not rely on simulated alarms or monitoring to make care decisions.
 
-- Use synthetic demonstration data only.
-- Do not submit names, national identity numbers, contact details, care notes, measurements linked to an identifiable person, credentials, or other confidential data.
-- AI-enabled features may transmit submitted content to the configured AI provider. Do not submit sensitive material unless the deployment, provider terms, lawful basis, and organisational approval have been reviewed.
-- Do not assume that clearing a screen deletes server logs, provider-side data, browser storage, backups, or exported files. Verify each storage path before relying on deletion.
-
-## Security boundaries
-
-Automated linting, builds, and dependency scans do not constitute a full security assessment. Before any non-demo use, review authentication and authorisation, network exposure, secrets, logging, retention/deletion, backups, dependency risk, accessibility, clinical validation, and incident response.
-
-Never commit API keys, tokens, passwords, private keys, certificates, environment files, or production data. Rotate any secret that has been exposed.
-
-## Reporting a vulnerability
-
-Report suspected vulnerabilities privately through GitHub's private vulnerability reporting feature if it is enabled. If unavailable, contact the repository owner privately before public disclosure. Include the affected path, impact, and safe reproduction steps. Do not include real patient data or active secrets.
+## Reporting
+Report suspected vulnerabilities privately through GitHub private vulnerability reporting if available. Otherwise contact the maintainer privately. Redact personal data and secrets from all reports.
