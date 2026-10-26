@@ -710,10 +710,10 @@ export default function App() {
             <div className="hidden lg:flex items-center gap-2.5">
               <div 
                 className="px-2.5 py-1.5 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-900 text-xs font-bold flex items-center gap-1.5"
-                title="Sikkerhet og personvern iht. Normen 6.0"
+                title="Demonstrasjon av sikkerhetskonsepter — ikke Normen-godkjent"
               >
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Normen: 98%</span>
+                <span>Normen: ikke vurdert</span>
               </div>
 
               <div 
