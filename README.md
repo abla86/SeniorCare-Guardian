@@ -47,6 +47,10 @@ npm run build
 
 GitHub Actions runs the TypeScript and production-build checks on pushes and pull requests.
 
+## Security UI boundary
+
+The security, consent, audit, hardware, export, and deletion screens are **demonstration-only**. They do not implement or verify LUKS/TPM encryption, Secure Boot, HelseID/VKP/mTLS, real role-based access control, legally valid consent, an immutable audit trail, a complete GDPR access export, or cryptographic erasure. The demo PIN is not authentication. Example people, contact details, measurements, audit entries, retention periods, and legal-basis labels are synthetic placeholders. Do not use this prototype to protect or process real care data.
+
 ## Data protection
 
 Use synthetic demonstration data only. Do not place patient names, national identity numbers, addresses, phone numbers, journal content, credentials or other confidential information in the repository or an unapproved deployment.
