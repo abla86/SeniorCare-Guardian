@@ -495,7 +495,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
               <div className="flex items-center gap-2.5">
                 <UserCheck className="w-7 h-7 text-indigo-700" />
                 <h2 className="text-2xl font-black text-slate-900">
-                  Samtykkeoversikt for Kari Nordmann (82)
+                  Samtykkeoversikt for fiktiv demo-person
                 </h2>
               </div>
               <p className="text-slate-600 text-sm mt-1 max-w-3xl">
