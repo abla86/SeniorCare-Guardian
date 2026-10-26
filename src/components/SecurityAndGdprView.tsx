@@ -256,7 +256,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
           }`}
         >
           <Trash2 className="w-4 h-4" />
-          <span>Innsyn &amp; Krypto-sletting</span>
+          <span>Demoeksport og nullstilling</span>
         </button>
       </div>
 
@@ -504,7 +504,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
             </div>
 
             <div className="bg-indigo-50 border border-indigo-200 rounded-2xl px-4 py-3 text-right">
-              <div className="text-[11px] font-bold text-indigo-800 uppercase">Aktive samtykker:</div>
+              <div className="text-[11px] font-bold text-indigo-800 uppercase">Markert aktiv i demo:</div>
               <div className="text-2xl font-black text-indigo-950">
                 {consents.filter(c => c.granted).length} av {consents.length}
               </div>
@@ -563,7 +563,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                 {/* Interactive Toggle Switch */}
                 <div className="flex items-center gap-3 self-end sm:self-center shrink-0">
                   <span className="text-xs font-extrabold text-slate-700">
-                    {item.granted ? 'Aktivt samtykke' : 'Tilbakekalt'}
+                    {item.granted ? 'Markert aktiv (demo)' : 'Markert tilbakekalt (demo)'}
                   </span>
                   <button
                     id={`toggle-consent-${item.id}`}
@@ -736,11 +736,11 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                   <span className={`text-xs font-black px-2.5 py-1 rounded-full uppercase ${
                     isKioskLocked ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'
                   }`}>
-                    {isKioskLocked ? 'Aktiv (Beskyttet)' : 'Deaktivert (Åpen)'}
+                    {isKioskLocked ? 'Aktiv (kun demo)' : 'Deaktivert (demo)'}
                   </span>
                 </div>
                 <p className="text-slate-600 text-sm mt-1 max-w-2xl">
-                  Når PIN-lås er aktivert, kan ikke beboer eller uautoriserte personer navigere bort fra Seniormodus eller endre systeminnstillinger uten å taste sikkerhetskoden ({kioskPin}). Nødalarm forblir alltid tilgjengelig.
+                  Dette er kun en klientbasert navigasjonsdemo med kjent PIN ({kioskPin}); den beskytter ikke data og kan omgås. Nødalarmvisningen er også simulert.
                 </p>
               </div>
             </div>
@@ -756,7 +756,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                 }`}
               >
                 <Lock className="w-4 h-4" />
-                <span>{isKioskLocked ? 'Lås opp Kioskmodus' : 'Aktiver Kiosk PIN-lås nå'}</span>
+                <span>{isKioskLocked ? 'Avslutt kiosk-demo' : 'Aktiver kiosk-demo'}</span>
               </button>
             </div>
           </div>
@@ -867,10 +867,10 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     className="bg-indigo-900 hover:bg-indigo-800 text-white font-black text-sm px-6 py-3.5 rounded-2xl shadow-md transition-all flex items-center gap-2"
                   >
                     <Download className="w-4 h-4" />
-                    <span>Last ned pasientuttrekk (.JSON)</span>
+                    <span>Last ned demo-data (.JSON)</span>
                   </button>
                   <span className="text-xs text-slate-500">
-                    Inneholder: Vitale målinger, medisinplan, kontaktliste, samtykker og revisjonslogg.
+                    Inneholder kun eksempeldata som er lastet i nettappen; ikke en komplett journal eller innsynsrapport.
                   </span>
                 </div>
               </div>
@@ -891,7 +891,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                   <span className="text-xs text-rose-800 font-bold">Ingen kryptografisk sletting</span>
                 </div>
                 <h2 className="text-2xl font-black text-rose-950 mt-1">
-                  Retten til sletting («Glem meg» / Crypto-Erase)
+                  Demonstrasjon av sletting – funksjonen er ikke implementert
                 </h2>
                 <p className="text-rose-900 text-sm mt-1 max-w-3xl leading-relaxed">
                   Denne nettappen har ikke tilgang til TPM- eller disknøkler. Handlingen nedenfor kan ikke slette data fra disk, server, sikkerhetskopier eller tredjepartstjenester.
@@ -1168,7 +1168,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     : 'bg-slate-300 text-slate-500 cursor-not-allowed'
                 }`}
               >
-                Utfør krypto-sanering
+                Registrer demo-handling
               </button>
             </div>
           </div>
