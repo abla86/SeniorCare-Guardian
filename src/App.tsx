@@ -223,7 +223,7 @@ export default function App() {
 
   const handleUnlockKioskPin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (kioskPinInput === kioskPin || kioskPinInput === '1234') {
+    if (kioskPinInput === kioskPin) {
       setShowKioskPinModal(false);
       if (pendingTab) {
         setActiveTab(pendingTab);
@@ -253,9 +253,9 @@ export default function App() {
           actorRole: currentRole,
           action: 'UPDATE',
           resource: 'SYSTEM_CONFIG',
-          justification: `Endret samtykkestatus til: ${actionStr} (GDPR Art. 7)`,
-          ipAddress: '127.0.0.1 (Lokal Kiosk)',
-          verified: true
+          justification: `Demo: samtykkestatus vist som ${actionStr}; ingen ekstern tjeneste ble endret.`, 
+          ipAddress: 'Ikke samlet inn (demo)',
+          verified: false
         };
         setAuditLog(audPrev => [newAudit, ...audPrev]);
 
@@ -270,18 +270,18 @@ export default function App() {
   const handleToggleKioskLock = (enable: boolean) => {
     setIsKioskLocked(enable);
     setSecurityStatus(prev => ({ ...prev, kioskPinLocked: enable }));
-    addLog('info', 'SENIOR_UI', `Seniormodus PIN-lås ${enable ? 'AKTIVERT' : 'DEAKTIVERT'}. Sikkerhetskode: ${kioskPin}`);
+    addLog('info', 'SENIOR_UI', `Demo: kioskvisning ${enable ? 'låst' : 'ulåst'}. Dette er ikke tilgangskontroll.`);
     triggerToast(enable ? 'Kiosk PIN-lås aktivert' : 'Kiosk PIN-lås deaktivert');
   };
 
-  // GDPR Art. 15 Data Export
+  // Export the in-memory demo fixture; this is not a GDPR access response.
   const handleExportGdprData = () => {
     const exportPayload = {
-      gdprStatement: 'Innsynsbegjæring i henhold til personvernforordningen (GDPR) Art. 15 og 20',
+      exportType: 'DEMO_DATA_ONLY — not a GDPR access response',
       exportedAt: new Date().toISOString(),
       patient: {
-        id: 'patient-kari-nordmann-82',
-        name: 'Kari Nordmann',
+        id: 'demo-person-001',
+        name: 'Fiktiv demo-person',
         birthYear: 1944,
         residenceType: 'Kommunal omsorgsleilighet',
         carePlan: 'Velferdsteknologisk trygghetspakke 3'
@@ -294,16 +294,16 @@ export default function App() {
       auditLogg: auditLog,
       maskinvareStatus: {
         medium: storageMetrics.medium,
-        luks2Kryptert: true,
-        tpm2Attestert: true,
-        normenVersjon: 'Normen 6.0'
+        luks2Kryptert: null,
+        tpm2Attestert: null,
+        normenVersjon: 'Ikke vurdert — ingen samsvarskontroll utført'
       }
     };
 
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportPayload, null, 2));
     const downloadAnchor = document.createElement('a');
     downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `kari-nordmann-helsedata-gdpr-innsyn-${Date.now()}.json`);
+    downloadAnchor.setAttribute("download", `seniorcare-demo-data-${Date.now()}.json`);
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();
@@ -318,16 +318,16 @@ export default function App() {
       actorRole: currentRole,
       action: 'EXPORT',
       resource: 'VITALE_TEGN',
-      justification: 'GDPR Art. 15 & 20 Fullstendig pasientdatauttrekk generert',
-      ipAddress: '127.0.0.1 (Kryptert nedlasting)',
-      verified: true
+      justification: 'Demo-data eksportert; dette er ikke et fullstendig personverninnsyn.',
+      ipAddress: 'Ikke samlet inn (demo)',
+      verified: false
     };
     setAuditLog(prev => [newAudit, ...prev]);
-    addLog('success', 'SENIOR_UI', 'Fullstendig pasientdatauttrekk generert og lastet ned (GDPR Art. 15).');
-    triggerToast('Pasientdatauttrekk (.JSON) lastet ned!');
+    addLog('info', 'SENIOR_UI', 'Demo-datafil eksportert. Ingen faktisk pasientjournal eller fullstendig GDPR-innsyn ble hentet.');
+    triggerToast('Demo-data (.JSON) lastet ned. Ikke et GDPR-innsynsuttrekk.');
   };
 
-  // Crypto Erase / GDPR Art. 17
+  // This prototype cannot erase disk keys or external data; record the click honestly.
   const handleExecuteCryptoErase = () => {
     const now = new Date();
     const timeStr = `I dag kl. ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
@@ -338,13 +338,13 @@ export default function App() {
       actorRole: currentRole,
       action: 'DELETE',
       resource: 'SYSTEM_CONFIG',
-      justification: 'Kryptografisk sanering av TPM master-nøkkel (GDPR Art. 17 / NSM)',
-      ipAddress: '127.0.0.1 (Krypto-sanering)',
-      verified: true
+      justification: 'Demo: slettingsfunksjon er ikke implementert; ingen TPM- eller diskdata slettet.',
+      ipAddress: 'Ikke samlet inn (demo)',
+      verified: false
     };
     setAuditLog(prev => [newAudit, ...prev]);
-    addLog('error', 'STORAGE_DAEMON', 'KRITISK SIKKERHETSSANERING: TPM 2.0 masterkey destruert. NVMe lagring er sanert iht. NSM.');
-    triggerToast('Sikker krypto-sanering fullført. Master-nøkler er slettet.');
+    addLog('info', 'STORAGE_DAEMON', 'Demo: slettingsknapp aktivert. Ingen TPM-nøkkel, disk eller eksterne data ble slettet.');
+    triggerToast('Demo-handling registrert. Ingen faktisk kryptografisk sletting er utført.');
   };
 
   // Add manual audit entry
@@ -361,8 +361,8 @@ export default function App() {
       action,
       resource,
       justification,
-      ipAddress: currentRole === 'nurse' ? '10.140.22.4 (VKP Helsenett)' : '84.212.19.82 (BankID N4)',
-      verified: true
+      ipAddress: 'Ikke samlet inn (demo)',
+      verified: false
     };
     setAuditLog(prev => [newAudit, ...prev]);
     addLog('info', currentRole === 'nurse' ? 'PLEIE_NOTAT' : 'SENIOR_UI', `Revisjonsspor ført: [${action}] ${resource} - "${justification}"`);
@@ -710,10 +710,10 @@ export default function App() {
             <div className="hidden lg:flex items-center gap-2.5">
               <div 
                 className="px-2.5 py-1.5 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-900 text-xs font-bold flex items-center gap-1.5"
-                title="Sikkerhet og personvern iht. Normen 6.0"
+                title="Demonstrasjon av sikkerhetskonsepter — ikke Normen-godkjent"
               >
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Normen: 98%</span>
+                <span>Normen: ikke vurdert</span>
               </div>
 
               <div 

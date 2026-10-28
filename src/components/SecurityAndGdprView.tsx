@@ -145,14 +145,14 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-                  Sikkerhet, GDPR &amp; Pasientvern
+                  Sikkerhetskonsepter – demonstrasjon
                 </h1>
                 <span className="bg-emerald-100 text-emerald-900 text-xs font-black px-2.5 py-1 rounded-full border border-emerald-300">
-                  Normen 6.0 godkjent
+                  IKKE VALIDERT
                 </span>
               </div>
               <p className="text-slate-600 text-sm sm:text-base mt-0.5">
-                Helhetlig beskyttelse av pasientdata i alle ledd: maskinvare, transport, samtykker og lovpålagt revisjon.
+                Dette er en klikkbar UI-demonstrasjon. Den verifiserer ikke reell kryptering, HelseID/mTLS, tilgangskontroll, sletting eller GDPR-etterlevelse.
               </p>
             </div>
           </div>
@@ -211,7 +211,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
           }`}
         >
           <UserCheck className="w-4 h-4" />
-          <span>Samtykkestyring (GDPR)</span>
+          <span>Samtykke – demo</span>
           <span className="bg-indigo-100 text-indigo-900 text-[11px] font-bold px-2 py-0.5 rounded-full">
             {consents.filter(c => c.granted).length}/{consents.length}
           </span>
@@ -256,7 +256,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
           }`}
         >
           <Trash2 className="w-4 h-4" />
-          <span>Innsyn &amp; Krypto-sletting</span>
+          <span>Demoeksport og nullstilling</span>
         </button>
       </div>
 
@@ -281,15 +281,15 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                   </span>
                 </div>
                 <h3 className="text-lg font-black text-slate-900">
-                  Kryptering i hvile (At-Rest)
+                  Kryptering i hvile – ikke verifisert
                 </h3>
                 <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                  LUKS2 med <strong>AES-XTS-256</strong>. Disknøkkel låses opp via TPM 2.0-brikke. Hvis minnekort/SSD tas ut, kan data ikke leses.
+                  Dette grensesnittet leser ikke vertssystemets diskkryptering eller TPM-status. Ingen kryptering kan bekreftes her.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-slate-500 flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Normen § 4.3 Tilfredsstilt</span>
+                <span>Ikke kontrollert</span>
               </div>
             </div>
 
@@ -301,19 +301,19 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     <Lock className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-black px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-900 border border-indigo-300">
-                    TLS 1.3 mTLS
+                    Ikke verifisert
                   </span>
                 </div>
                 <h3 className="text-lg font-black text-slate-900">
                   Transportlagssikkerhet
                 </h3>
                 <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                  Gjensidig autentisering (mTLS) med HelseID-klientsertifikat mot <strong>Norsk Helsenett (VKP)</strong>. Ingen åpne innkommende porter.
+                  Ingen faktisk HelseID/VKP-integrasjon eller mTLS-kontroll er implementert i denne skjermen. TLS må konfigureres og verifiseres separat.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-slate-500 flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                <span>End-to-End Kryptering</span>
+                <span>Ikke kontrollert</span>
               </div>
             </div>
 
@@ -325,19 +325,19 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     <Cpu className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-black px-2.5 py-1 rounded-full bg-purple-100 text-purple-900 border border-purple-300">
-                    TPM 2.0 PCR OK
+                    Ikke verifisert
                   </span>
                 </div>
                 <h3 className="text-lg font-black text-slate-900">
                   Maskinvareintegritet
                 </h3>
                 <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                  Kryptografisk målt oppstart (Measured Boot). Oppdager manipulert firmware eller uautoriserte boot-loaders.
+                  Ingen TPM-attestering, measured boot eller firmwarekontroll utføres av denne nettappen.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-slate-500 flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Anti-Tamper Beskyttelse</span>
+                <span>Ikke implementert</span>
               </div>
             </div>
 
@@ -349,19 +349,19 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     <Eye className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-black px-2.5 py-1 rounded-full bg-teal-100 text-teal-900 border border-teal-300">
-                    Edge AI / Ingen Video
+                    Ikke verifisert
                   </span>
                 </div>
                 <h3 className="text-lg font-black text-slate-900">
-                  Dataminimering (GDPR)
+                  Dataminimering – konseptdemo
                 </h3>
                 <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                  mmWave radarbølger tolkes lokalt på enheten. Ingen videokamera i boligen, og kun utledede hendelser (f.eks. «fall detektert») overføres.
+                  Denne prototypen verifiserer ikke sensortype, lokal behandling eller nettverkstrafikk. Ikke legg inn reelle helseopplysninger.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-slate-500 flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Personvern by Design</span>
+                <span>Krever teknisk vurdering</span>
               </div>
             </div>
 
@@ -370,10 +370,10 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
           {/* Detailed Security Architecture: Ledd for Ledd */}
           <section className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-slate-200 shadow-lg">
             <h2 className="text-2xl font-black text-slate-900 mb-2">
-              Sikkerhetsarkitektur i alle ledd («Defense-in-Depth»)
+              Illustrert sikkerhetsarkitektur – ikke implementasjonsbevis
             </h2>
             <p className="text-sm text-slate-600 mb-6 max-w-3xl">
-              For at velferdsteknologi skal være godkjent for bruk i private hjem og omsorgsboliger, må sikkerheten være vanntett fra den fysiske sensoren til kommunens EPJ-system.
+              Punktene nedenfor er mulige designkrav, ikke funksjoner som denne prototypen har implementert eller fått godkjent.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -391,9 +391,9 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     </h3>
                   </div>
                   <ul className="text-xs text-slate-700 space-y-1.5 pl-9 list-disc">
-                    <li><strong>NVMe SSD med overprovisjonering:</strong> Beskytter mot plutselig filsystem-korrupsjon som rammer vanlige MicroSD-kort.</li>
-                    <li><strong>TPM 2.0 Cryptographic Root of Trust:</strong> Nøkler lagres aldri i klartekst på filsystemet.</li>
-                    <li><strong>Chassis Tamper Switch:</strong> Varsler umiddelbart hvis noen åpner dekselet eller kobler til eksterne USB-nøkler.</li>
+                    <li><strong>Maskinvare:</strong> Ingen SSD-egenskaper eller dataintegritet verifiseres av prototypen.</li>
+                    <li><strong>TPM/nøkler:</strong> Ingen TPM-tilkobling eller nøkkellagring er implementert.</li>
+                    <li><strong>Manipulasjonsvarsling:</strong> Ingen fysisk bryter eller USB-overvåking er tilkoblet.</li>
                   </ul>
                 </div>
 
@@ -408,9 +408,9 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     </h3>
                   </div>
                   <ul className="text-xs text-slate-700 space-y-1.5 pl-9 list-disc">
-                    <li><strong>Skrivebeskyttet rotfilsystem (Read-Only RootFS):</strong> Hindrer ondsinnet endring av systemfiler.</li>
-                    <li><strong>log2ram &amp; ZRAM:</strong> Logger samles i kryptert minne før de synkroniseres kontrollert, for å unngå overskriving og slitasje.</li>
-                    <li><strong>Sandboxed systemd-tjenester:</strong> Hver sensor-tjeneste kjører i egne isolerte cgroups uten root-rettigheter.</li>
+                    <li><strong>Operativsystem:</strong> Rotfilsystemets skrivebeskyttelse konfigureres utenfor nettappen og er ikke kontrollert her.</li>
+                    <li><strong>Logging:</strong> Ingen log2ram/ZRAM-konfigurasjon eller kryptert minnelagring verifiseres.</li>
+                    <li><strong>Tjenesteisolasjon:</strong> Ingen systemd-tjenester eller cgroups styres av denne UI-en.</li>
                   </ul>
                 </div>
               </div>
@@ -428,9 +428,9 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     </h3>
                   </div>
                   <ul className="text-xs text-slate-700 space-y-1.5 pl-9 list-disc">
-                    <li><strong>mTLS mot VKP (Velferdsteknologisk knutepunkt):</strong> Data utveksles over sikret VPN på Norsk Helsenett.</li>
-                    <li><strong>Ingen åpne lytteporter på Internett:</strong> Enheten initierer kun utgående sikrede WebSockets / MQTT-forbindelser.</li>
-                    <li><strong>Bluetooth LE 5.3 med OOB-kryptering:</strong> Beskytter måledata fra smart dosett og pulssensorer mot sniffing.</li>
+                    <li><strong>Helsenett:</strong> Ingen VKP-, HelseID-, mTLS- eller VPN-tilkobling er implementert.</li>
+                    <li><strong>Nettverk:</strong> Port- og trafikkregler må kontrolleres på vertssystemet; appen bekrefter dem ikke.</li>
+                    <li><strong>Bluetooth:</strong> Ingen BLE-sensorintegrasjon eller OOB-nøkkelutveksling er implementert.</li>
                   </ul>
                 </div>
 
@@ -445,9 +445,9 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     </h3>
                   </div>
                   <ul className="text-xs text-slate-700 space-y-1.5 pl-9 list-disc">
-                    <li><strong>Seniormodus med Kiosk PIN-sikring:</strong> Forhindrer utilsiktede endringer for beboer.</li>
-                    <li><strong>Rollebasert tilgang (RBAC):</strong> Pårørende ser kun trygghetsstatus – aldri konfidensielle journalnotater.</li>
-                    <li><strong>Spesifisert revisjonsspor (Pasientjournalloven § 22a):</strong> Alle helsepersonelloppslag loggføres uutslettelig.</li>
+                    <li><strong>Kioskmodus:</strong> Klientbasert demo-PIN er ikke autentisering og kan omgås.</li>
+                    <li><strong>Roller:</strong> Rollebytte i denne prototypen er UI-tilstand, ikke server-side tilgangskontroll.</li>
+                    <li><strong>Revisjonslogg:</strong> Dette er en redigerbar klientlogg, ikke en uforanderlig eller lovmessig validert journal-logg.</li>
                   </ul>
                 </div>
               </div>
@@ -460,13 +460,13 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
             <div>
               <div className="flex items-center gap-2 text-indigo-300 text-xs font-black uppercase tracking-wider mb-1">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Normen 6.0 samsvarsjekk utført</span>
+                <span>Samsvarsvurdering ikke utført</span>
               </div>
               <h3 className="text-2xl font-black">
-                Sikkerhetsgrad: 98% (Optimal driftstilstand)
+                Sikkerhetsstatus: Ikke vurdert
               </h3>
               <p className="text-indigo-200 text-sm max-w-2xl mt-1">
-                Kryptering i hvile, transportkryptering og revisjonslogg er aktiv. Samtykker er registrert og verifisert.
+                Ingen faktisk kryptering, maskinvareattestering eller juridisk gyldig samtykkebehandling verifiseres av prototypen.
               </p>
             </div>
 
@@ -477,7 +477,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                 className="bg-white hover:bg-slate-100 text-slate-950 font-extrabold text-sm px-5 py-3 rounded-xl transition-all shadow-md flex items-center gap-2"
               >
                 <Download className="w-4 h-4 text-indigo-700" />
-                <span>Eksporter pasientdata (GDPR Art. 15)</span>
+                <span>Eksporter demo-data (JSON)</span>
               </button>
             </div>
           </div>
@@ -495,16 +495,16 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
               <div className="flex items-center gap-2.5">
                 <UserCheck className="w-7 h-7 text-indigo-700" />
                 <h2 className="text-2xl font-black text-slate-900">
-                  Samtykkeoversikt for Kari Nordmann (82)
+                  Samtykkeoversikt for fiktiv demo-person
                 </h2>
               </div>
               <p className="text-slate-600 text-sm mt-1 max-w-3xl">
-                I henhold til GDPR Art. 7 og Pasient- og brukerrettighetsloven § 4-1 kan beboer eller verge når som helst aktivere eller tilbakekalle spesifikke samtykker med umiddelbar virkning.
+                Bryterne endrer kun lokal demo-tilstand. De registrerer ikke juridisk gyldig samtykke og deaktiverer ingen ekstern sensor eller tjeneste.
               </p>
             </div>
 
             <div className="bg-indigo-50 border border-indigo-200 rounded-2xl px-4 py-3 text-right">
-              <div className="text-[11px] font-bold text-indigo-800 uppercase">Aktive samtykker:</div>
+              <div className="text-[11px] font-bold text-indigo-800 uppercase">Markert aktiv i demo:</div>
               <div className="text-2xl font-black text-indigo-950">
                 {consents.filter(c => c.granted).length} av {consents.length}
               </div>
@@ -540,7 +540,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                         Kategori: {item.category}
                       </span>
                       <span className="text-xs font-semibold text-slate-500">
-                        Oppbevaring: {item.dataRetentionDays} dager
+                        Demo-verdi for oppbevaring: {item.dataRetentionDays} dager (ikke håndhevet)
                       </span>
                       <span className="text-xs text-slate-400">
                         Sist oppdatert: {item.lastUpdated}
@@ -563,7 +563,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                 {/* Interactive Toggle Switch */}
                 <div className="flex items-center gap-3 self-end sm:self-center shrink-0">
                   <span className="text-xs font-extrabold text-slate-700">
-                    {item.granted ? 'Aktivt samtykke' : 'Tilbakekalt'}
+                    {item.granted ? 'Markert aktiv (demo)' : 'Markert tilbakekalt (demo)'}
                   </span>
                   <button
                     id={`toggle-consent-${item.id}`}
@@ -586,7 +586,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
           <div className="mt-6 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-950 flex items-center gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
             <p>
-              <strong>Merk ved tilbakekalling:</strong> Dersom samtykke til fallradar oppheves, vil sensoren deaktiveres lokalt og ingen bevegelsesdata overvåkes. Nødalarmknappen forblir alltid tilgjengelig for manuell bruk.
+              <strong>Merk: demo-handling – ikke reell sensorstyring.</strong> Tilbakekalling endrer kun visningen i denne prototypen. Den slår ikke av sensorer eller varsling og skal ikke brukes til reell omsorg.
             </p>
           </div>
         </section>
@@ -602,11 +602,11 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
               <div className="flex items-center gap-2.5">
                 <Clock className="w-7 h-7 text-indigo-700" />
                 <h2 className="text-2xl font-black text-slate-900">
-                  Lovpålagt Innsyns- og Revisjonslogg
+                  Simulert revisjonslogg – ikke lovpålagt logg
                 </h2>
               </div>
               <p className="text-slate-600 text-sm mt-1 max-w-3xl">
-                Pasientjournalloven § 22a &amp; GDPR Art. 30 krever uutslettelig registrering av hvem som har lest eller endret pasientdata, med tidspunkt og tjenstlig begrunnelse.
+                Loggen er kun klientbasert demo-data og kan endres eller slettes. Den oppfyller ikke i seg selv krav til pasientjournal eller lovpålagt revisjon.
               </p>
             </div>
 
@@ -736,11 +736,11 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                   <span className={`text-xs font-black px-2.5 py-1 rounded-full uppercase ${
                     isKioskLocked ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'
                   }`}>
-                    {isKioskLocked ? 'Aktiv (Beskyttet)' : 'Deaktivert (Åpen)'}
+                    {isKioskLocked ? 'Aktiv (kun demo)' : 'Deaktivert (demo)'}
                   </span>
                 </div>
                 <p className="text-slate-600 text-sm mt-1 max-w-2xl">
-                  Når PIN-lås er aktivert, kan ikke beboer eller uautoriserte personer navigere bort fra Seniormodus eller endre systeminnstillinger uten å taste sikkerhetskoden ({kioskPin}). Nødalarm forblir alltid tilgjengelig.
+                  Dette er kun en klientbasert navigasjonsdemo med kjent PIN ({kioskPin}); den beskytter ikke data og kan omgås. Nødalarmvisningen er også simulert.
                 </p>
               </div>
             </div>
@@ -756,7 +756,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                 }`}
               >
                 <Lock className="w-4 h-4" />
-                <span>{isKioskLocked ? 'Lås opp Kioskmodus' : 'Aktiver Kiosk PIN-lås nå'}</span>
+                <span>{isKioskLocked ? 'Avslutt kiosk-demo' : 'Aktiver kiosk-demo'}</span>
               </button>
             </div>
           </div>
@@ -770,7 +770,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                 <div className="flex items-center gap-3">
                   <HardDrive className="w-6 h-6 text-indigo-700" />
                   <h3 className="text-lg font-black text-slate-900">
-                    LUKS2 Disk-Kryptering
+                    Diskkryptering – ikke tilkoblet
                   </h3>
                 </div>
                 <span className="bg-emerald-100 text-emerald-900 text-xs font-black px-3 py-1 rounded-full border border-emerald-300">
@@ -784,15 +784,15 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-slate-100">
                   <span className="text-slate-500">Nøkkel-lagring:</span>
-                  <span className="font-bold text-slate-900">TPM 2.0 Sealed PCR[7,14]</span>
+                  <span className="font-bold text-slate-900">Ikke tilgjengelig i demo</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-slate-100">
                   <span className="text-slate-500">Cold-boot / RAM-sikring:</span>
-                  <span className="font-bold text-emerald-700">Aktiv (Kernel lockdown)</span>
+                  <span className="font-bold text-emerald-700">Ikke kontrollert</span>
                 </div>
                 <div className="flex justify-between py-1.5">
                   <span className="text-slate-500">Filsystem-status:</span>
-                  <span className="font-bold text-emerald-700">Integritet verifisert (dm-integrity)</span>
+                  <span className="font-bold text-emerald-700">Ikke kontrollert</span>
                 </div>
               </div>
             </div>
@@ -803,29 +803,29 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                 <div className="flex items-center gap-3">
                   <Cpu className="w-6 h-6 text-purple-700" />
                   <h3 className="text-lg font-black text-slate-900">
-                    TPM 2.0 &amp; Målt Oppstart
+                    TPM og målt oppstart – ikke tilkoblet
                   </h3>
                 </div>
                 <span className="bg-purple-100 text-purple-900 text-xs font-black px-3 py-1 rounded-full border border-purple-300">
-                  Maskinvareattestert
+                  Ikke attestert
                 </span>
               </div>
               <div className="space-y-2.5 text-xs text-slate-700">
                 <div className="flex justify-between py-1.5 border-b border-slate-100">
                   <span className="text-slate-500">TPM Produsent / Versjon:</span>
-                  <span className="font-mono font-bold">Infineon SLB9670 / TPM 2.0</span>
+                  <span className="font-mono font-bold">Ikke målt</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-slate-100">
                   <span className="text-slate-500">UEFI Secure Boot:</span>
-                  <span className="font-bold text-emerald-700">Aktivert med kommunale nøkler</span>
+                  <span className="font-bold text-emerald-700">Ikke kontrollert</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-slate-100">
                   <span className="text-slate-500">Kabinett-sikring (Tamper):</span>
-                  <span className="font-bold text-emerald-700">Forseglet (Ingen inntrengning)</span>
+                  <span className="font-bold text-emerald-700">Ikke kontrollert</span>
                 </div>
                 <div className="flex justify-between py-1.5">
                   <span className="text-slate-500">USB-port blokkering:</span>
-                  <span className="font-bold text-slate-900">USBGuard aktiv (Kun godkjente enheter)</span>
+                  <span className="font-bold text-slate-900">Ikke kontrollert</span>
                 </div>
               </div>
             </div>
@@ -849,15 +849,15 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
               <div className="flex-1">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-black px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-900">
-                    GDPR Art. 15 &amp; 20
+                    Demoeksport – ikke GDPR-bevis
                   </span>
                   <span className="text-xs text-slate-500 font-semibold">Dataportabilitet</span>
                 </div>
                 <h2 className="text-2xl font-black text-slate-900 mt-1">
-                  Komplett pasientdatauttrekk (Innsynsbegjæring)
+                  Eksport av eksempeldata
                 </h2>
                 <p className="text-slate-600 text-sm mt-1 max-w-3xl leading-relaxed">
-                  Pasienten eller fullmektig har lovfestet rett til å motta en fullstendig kopi av alle personopplysninger og sensordata som er samlet inn av velferdsteknologien.
+                  Eksporten inneholder bare data som denne demoen holder i minnet. Den er ikke et fullstendig innsynsuttrekk fra et faktisk behandlingssystem.
                 </p>
 
                 <div className="mt-5 flex flex-wrap items-center gap-4">
@@ -867,10 +867,10 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     className="bg-indigo-900 hover:bg-indigo-800 text-white font-black text-sm px-6 py-3.5 rounded-2xl shadow-md transition-all flex items-center gap-2"
                   >
                     <Download className="w-4 h-4" />
-                    <span>Last ned pasientuttrekk (.JSON)</span>
+                    <span>Last ned demo-data (.JSON)</span>
                   </button>
                   <span className="text-xs text-slate-500">
-                    Inneholder: Vitale målinger, medisinplan, kontaktliste, samtykker og revisjonslogg.
+                    Inneholder kun eksempeldata som er lastet i nettappen; ikke en komplett journal eller innsynsrapport.
                   </span>
                 </div>
               </div>
@@ -886,15 +886,15 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
               <div className="flex-1">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-black px-2.5 py-1 rounded-full bg-rose-600 text-white uppercase">
-                    GDPR Art. 17 / NSM Sanering
+                    Sletting – kun demo-tilstand
                   </span>
-                  <span className="text-xs text-rose-800 font-bold">Kryptografisk sletting</span>
+                  <span className="text-xs text-rose-800 font-bold">Ingen kryptografisk sletting</span>
                 </div>
                 <h2 className="text-2xl font-black text-rose-950 mt-1">
-                  Retten til sletting («Glem meg» / Crypto-Erase)
+                  Demonstrasjon av sletting – funksjonen er ikke implementert
                 </h2>
                 <p className="text-rose-900 text-sm mt-1 max-w-3xl leading-relaxed">
-                  Ved opphør av tjenesten eller tilbaketrekking av behandlingsgrunnlag, destrueres disknøkkelen i TPM-brikken umiddelbart. Alle lagrede helse- og sensordata på NVMe/SSD blir ugjenkallelig uleselige i tråd med Nasjonal Sikkerhetsmyndighets (NSM) krav.
+                  Denne nettappen har ikke tilgang til TPM- eller disknøkler. Handlingen nedenfor kan ikke slette data fra disk, server, sikkerhetskopier eller tredjepartstjenester.
                 </p>
 
                 <div className="mt-6 flex flex-wrap items-center gap-4">
@@ -907,7 +907,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     className="bg-rose-700 hover:bg-rose-800 active:scale-95 text-white font-black text-sm px-6 py-3.5 rounded-2xl shadow-lg transition-all flex items-center gap-2"
                   >
                     <AlertOctagon className="w-5 h-5" />
-                    <span>Gjennomfør sikker krypto-sanering...</span>
+                    <span>Nullstill demo-tilstand...</span>
                   </button>
                   <span className="text-xs text-rose-800 font-semibold">
                     Advarsel: Handlingen kan ikke angres!
@@ -1122,16 +1122,16 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
               <AlertOctagon className="w-8 h-8 shrink-0" />
               <div>
                 <h3 className="text-2xl font-black text-slate-900">
-                  Bekreft kryptografisk sletting
+                  Bekreft nullstilling av demo-tilstand
                 </h3>
                 <p className="text-xs text-rose-700 font-bold">
-                  Sikker sanering i henhold til NSM og GDPR Art. 17
+                  Kun demo-handling – ikke NSM/GDPR-sletting
                 </p>
               </div>
             </div>
 
             <p className="text-sm text-slate-700 leading-relaxed mb-4">
-              Denne handlingen vil slette masterkrypteringsnøkkelen fra TPM-brikken og nullstille all lagret pasienthistorikk. Dataene vil aldri kunne gjenopprettes.
+              Denne handlingen nullstiller ikke TPM, disk eller eksterne lagringssystemer. Den registrerer bare en demo-handling i appens minnetilstand.
             </p>
 
             <div className="mb-4">
@@ -1168,7 +1168,7 @@ export const SecurityAndGdprView: React.FC<SecurityAndGdprViewProps> = ({
                     : 'bg-slate-300 text-slate-500 cursor-not-allowed'
                 }`}
               >
-                Utfør krypto-sanering
+                Registrer demo-handling
               </button>
             </div>
           </div>

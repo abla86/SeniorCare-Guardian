@@ -60,18 +60,18 @@ export const INITIAL_NVME_METRICS: StorageMetrics = {
 export const INITIAL_CONTACTS: SeniorContact[] = [
   {
     id: '1',
-    name: 'Ingrid (Datter)',
+    name: 'Demo-pårørende A',
     relation: 'Pårørende / Primærkontakt',
-    phone: '+47 912 34 567',
+    phone: 'Ikke oppgitt (demo)',
     avatarBg: 'bg-emerald-600',
     initials: 'IN',
     statusBadge: 'Tilgjengelig nå'
   },
   {
     id: '2',
-    name: 'Henrik (Sønn)',
+    name: 'Demo-pårørende B',
     relation: 'Pårørende',
-    phone: '+47 988 76 543',
+    phone: 'Ikke oppgitt (demo)',
     avatarBg: 'bg-blue-600',
     initials: 'HE',
     statusBadge: 'Tilgjengelig (på jobb)'
@@ -80,7 +80,7 @@ export const INITIAL_CONTACTS: SeniorContact[] = [
     id: '3',
     name: 'Hjemmesykepleien',
     relation: 'Vakttelefon Sone Sentrum',
-    phone: '+47 33 00 11 22',
+    phone: 'Ikke oppgitt (demo)',
     avatarBg: 'bg-teal-700',
     initials: 'HS',
     statusBadge: 'Døgnbemannet vakt'
@@ -91,7 +91,7 @@ export const INITIAL_EMERGENCY_MESSAGES: EmergencyMessageEvent[] = [
   {
     id: 'msg-1',
     recipientId: '1',
-    recipientName: 'Ingrid (Datter)',
+    recipientName: 'Demo-pårørende A',
     message: 'Jeg har tatt morgenmedisin og har det fint.',
     timestamp: 'I dag kl. 08:35',
     status: 'delivered',
@@ -234,77 +234,77 @@ export const USER_PROFILES: Record<string, UserProfile> = {
   senior: {
     id: 'usr-senior',
     role: 'senior',
-    name: 'Kari Nordmann (82)',
+    name: 'Fiktiv demo-person',
     title: 'Beboer / Bruker',
-    securityLevel: 'Seniormodus (Kiosk PIN-beskyttet)',
+    securityLevel: 'Seniormodus (demo; ikke tilgangskontroll)',
     sessionExpires: 'Aktiv enhet'
   },
   relative: {
     id: 'usr-relative',
     role: 'relative',
-    name: 'Ingrid Nordmann',
+    name: 'Demo-pårørende A',
     title: 'Pårørende / Datter',
-    securityLevel: 'BankID Nivå 4 (To-faktor)',
+    securityLevel: 'Demo-rolle; BankID ikke tilkoblet',
     sessionExpires: '28 minutter'
   },
   nurse: {
     id: 'usr-nurse',
     role: 'nurse',
-    name: 'Sykepleier Anne Berg',
+    name: 'Demo-sykepleier',
     title: 'Hjemmesykepleien Sone Sentrum',
-    hprNumber: 'HPR-9482103',
-    securityLevel: 'HelseID / Buypass Nivå 4 (PKI-kort)',
+    hprNumber: 'DEMO-NOT-REAL',
+    securityLevel: 'Demo-rolle; HelseID ikke tilkoblet',
     sessionExpires: '12 minutter'
   },
   admin: {
     id: 'usr-admin',
     role: 'admin',
-    name: 'Lars Hansen',
-    title: 'Sertifisert Medisinsk-Teknisk IT-ingeniør',
-    securityLevel: 'YubiKey FIDO2 + mTLS Sertifikat',
+    name: 'Demo-administrator',
+    title: 'Demo-administrator',
+    securityLevel: 'Demo-rolle; ingen YubiKey/mTLS-verifisering',
     sessionExpires: '8 minutter'
   }
 };
 
 export const INITIAL_SECURITY_STATUS: SecurityStatus = {
-  encryptionAtRest: true, // LUKS2 AES-XTS-256
-  encryptionInTransit: true, // TLS 1.3 mTLS med HelseID
-  tpmAttestation: 'VERIFIED',
-  secureBootEnabled: true,
+  encryptionAtRest: false, // Ikke målt av prototypen
+  encryptionInTransit: false, // Ikke målt av prototypen
+  tpmAttestation: 'WARNING',
+  secureBootEnabled: false,
   kioskPinLocked: false,
-  normenCompliancePercent: 98,
-  tamperSensorStatus: 'OK_SEALED',
-  offlineZeroLeakMode: true
+  normenCompliancePercent: 0, // Ikke vurdert; 0 er kun en teknisk placeholder
+  tamperSensorStatus: 'NOT_VERIFIED',
+  offlineZeroLeakMode: false
 };
 
 export const INITIAL_CONSENTS: ConsentItem[] = [
   {
     id: 'consent-radar',
     title: 'mmWave Fallradar og Tilstedeværelse',
-    description: 'Anonymisert radarmonitorering i rom (ingen kamera/optisk video). Registrerer plutselig fall og uvanlig inaktivitet i sanntid.',
+    description: 'Demo av en tenkt fallradar. Ingen faktisk sensor er koblet til og ingen fall eller inaktivitet detekteres.',
     category: 'sikkerhet',
     granted: true,
-    legalBasis: 'GDPR Art. 6(1)(a) Uttrykkelig samtykke & Pasient- og brukerrettighetsloven § 4-1',
+    legalBasis: 'Demo-placeholder — behandlingsgrunnlag er ikke juridisk vurdert',
     dataRetentionDays: 1, // Edge minimerer, rådata slettes etter 24 timer
     lastUpdated: '12.01.2026'
   },
   {
     id: 'consent-relative-sharing',
     title: 'Deling av trygghetsstatus med pårørende (Ingrid & Henrik)',
-    description: 'Gir datter og sønn innsyn i daglig «Jeg har det bra»-status, nødmeldinger og dagsplan. Skjermer sensitive medisinske diagnoser.',
+    description: 'Illustrerer mulig deling av demo-status. Ingen kontoer, reelle mottakere eller datadeling er tilkoblet.',
     category: 'pårørende',
     granted: true,
-    legalBasis: 'GDPR Art. 6(1)(a) Samtykke til deling med utvalgte nærstående',
+    legalBasis: 'Demo-placeholder — behandlingsgrunnlag er ikke juridisk vurdert',
     dataRetentionDays: 30,
     lastUpdated: '15.01.2026'
   },
   {
     id: 'consent-vitals-nursing',
     title: 'Helsedata & Dosett-status til Hjemmesykepleien',
-    description: 'Overfører puls, spO2 og registrert åpning av medisindosett til kommunens helsejournal (VKP/EPJ) via sikret Helsenett-kanal.',
+    description: 'Illustrerer et mulig arbeidsforløp. Ingen data sendes til VKP, EPJ eller Norsk Helsenett.',
     category: 'helse',
     granted: true,
-    legalBasis: 'Helsepersonelloven § 21 / Pasientjournalloven § 6',
+    legalBasis: 'Demo-placeholder — juridisk grunnlag og integrasjon er ikke vurdert',
     dataRetentionDays: 365,
     lastUpdated: '10.01.2026'
   },
@@ -314,7 +314,7 @@ export const INITIAL_CONSENTS: ConsentItem[] = [
     description: 'Pseudonymisert feilsøking for å forhindre datakorrupsjon og krasj på grunn av minnekort/SSD-slitasje.',
     category: 'telemetri',
     granted: true,
-    legalBasis: 'GDPR Art. 6(1)(f) Berettiget interesse for stabil pasientsikkerhet',
+    legalBasis: 'Demo-placeholder — behandlingsgrunnlag er ikke juridisk vurdert',
     dataRetentionDays: 90,
     lastUpdated: '01.01.2026'
   }
@@ -324,48 +324,48 @@ export const INITIAL_AUDIT_LOG: AuditLogEntry[] = [
   {
     id: 'aud-001',
     timestamp: 'I dag kl. 14:45:10',
-    actorName: 'Sykepleier Anne Berg',
+    actorName: 'Demo-sykepleier',
     actorRole: 'nurse',
     actorHprNumber: 'HPR-9482103',
     action: 'READ',
     resource: 'MEDISINER',
     justification: 'Kontroll av ettermiddagsdose og dosett-integritet',
-    ipAddress: '10.140.22.4 (VKP Helsenett)',
-    verified: true
+    ipAddress: 'Ikke samlet inn (demo)',
+    verified: false
   },
   {
     id: 'aud-002',
     timestamp: 'I dag kl. 14:30:15',
-    actorName: 'Ingrid Nordmann',
+    actorName: 'Demo-pårørende A',
     actorRole: 'relative',
     action: 'READ',
     resource: 'KONTAKTER',
     justification: 'Innsyn i daglig trygghetsinnsjekk og kalender',
-    ipAddress: '84.212.19.82 (BankID N4)',
-    verified: true
+    ipAddress: 'Ikke samlet inn (demo)',
+    verified: false
   },
   {
     id: 'aud-003',
     timestamp: 'I dag kl. 13:12:00',
-    actorName: 'Lars Hansen',
+    actorName: 'Demo-administrator',
     actorRole: 'admin',
     action: 'READ',
     resource: 'SYSTEM_CONFIG',
     justification: 'S.M.A.R.T.-helsekontroll og slitasjeinspeksjon for lagring',
-    ipAddress: '10.140.1.18 (SSH mTLS)',
-    verified: true
+    ipAddress: 'Ikke samlet inn (demo)',
+    verified: false
   },
   {
     id: 'aud-004',
     timestamp: 'I går kl. 19:20:00',
-    actorName: 'Sykepleier Anne Berg',
+    actorName: 'Demo-sykepleier',
     actorRole: 'nurse',
     actorHprNumber: 'HPR-9482103',
     action: 'UPDATE',
     resource: 'MEDISINER',
     justification: 'Oppdatert kveldsdose for dosett rom 3 (Melatonin)',
-    ipAddress: '10.140.22.4 (VKP Helsenett)',
-    verified: true
+    ipAddress: 'Ikke samlet inn (demo)',
+    verified: false
   }
 ];
 

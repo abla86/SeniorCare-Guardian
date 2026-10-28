@@ -137,13 +137,13 @@ export interface AuditLogEntry {
 }
 
 export interface SecurityStatus {
-  encryptionAtRest: boolean; // LUKS2 AES-XTS-256
-  encryptionInTransit: boolean; // TLS 1.3 + mTLS med HelseID
+  encryptionAtRest: boolean; // Demo flag only; does not verify host encryption
+  encryptionInTransit: boolean; // Demo flag only; does not verify network transport
   tpmAttestation: 'VERIFIED' | 'WARNING' | 'FAILED';
   secureBootEnabled: boolean;
   kioskPinLocked: boolean;
-  normenCompliancePercent: number; // e.g. 98%
-  tamperSensorStatus: 'OK_SEALED' | 'TAMPER_DETECTED';
+  normenCompliancePercent: number; // Demo placeholder only; not a compliance assessment
+  tamperSensorStatus: 'OK_SEALED' | 'TAMPER_DETECTED' | 'NOT_VERIFIED';
   offlineZeroLeakMode: boolean;
 }
 
